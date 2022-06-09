@@ -11,15 +11,16 @@ from starlette.middleware.cors import CORSMiddleware
 
 from app import models , auth
 
-# from database import engine
+from app.database import engine
 
-from schemas import PostCreate, Post   # we placed our schemas class in separate file
+from app.schemas import PostCreate, Post   # we placed our schemas class in separate file
+
 from routers import post,user,vote       # import the post and user , vote implementation using the routers
 
 from app.config import settings # import the settings class that holds all the environment variables
 
 
-# models.Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
 
 # connect to the DB (host: localhost / dbname: fastapi / user: postgres / password: 1234)
 # loop until we connect to the db
