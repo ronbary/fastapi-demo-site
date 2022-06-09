@@ -16,7 +16,8 @@ from routers import post,user,vote       # import the post and user , vote imple
 
 from app.config import settings # import the settings class that holds all the environment variables
 
-models.Base.metadata.create_all(bind=engine)
+
+# models.Base.metadata.create_all(bind=engine)
 
 # connect to the DB (host: localhost / dbname: fastapi / user: postgres / password: 1234)
 # loop until we connect to the db
