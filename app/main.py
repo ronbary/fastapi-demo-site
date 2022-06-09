@@ -20,25 +20,26 @@ from routers import post,user,vote       # import the post and user , vote imple
 from app.config import settings # import the settings class that holds all the environment variables
 
 
-models.Base.metadata.create_all(bind=engine)
+# models.Base.metadata.create_all(bind=engine)
 
 # connect to the DB (host: localhost / dbname: fastapi / user: postgres / password: 1234)
 # loop until we connect to the db
 
-while True:
-    try:
-        conn = psycopg2.connect(host='localhost', database='fastapi', user='postgres',
-                                password='1234', cursor_factory=RealDictCursor)
-        cursor = conn.cursor()
-        print("Database connection was successful")
-        break
-    except Exception as error:
-        print("Connecting to database failed")
-        print(f"Error: ", error)
-        time.sleep(4)  # sleep 2 sec
-
-# for debugging : printing value from the settings class holds all the environment variables
-print(f"db name: {settings.database_name}")
+# while True:
+#     try:
+#         conn = psycopg2.connect(host='localhost', database='fastapi', user='postgres',
+#                                 password='1234', cursor_factory=RealDictCursor)
+#         cursor = conn.cursor()
+#         print("Database connection was successful")
+#         break
+#     except Exception as error:
+#         print("Connecting to database failed")
+#         print(f"Error: ", error)
+#         time.sleep(4)  # sleep 2 sec
+#
+#
+# # for debugging : printing value from the settings class holds all the environment variables
+# print(f"db name: {settings.database_name}")
 
 
 

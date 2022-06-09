@@ -16,6 +16,8 @@ from app.config import settings         # import the settings class that holds a
 SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.database_username}:{settings.database_password}@" \
                           f"{settings.database_hostname}:{settings.database_port}/{settings.database_name}"
 
+
+
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -27,6 +29,8 @@ Base = declarative_base()     # this Base class will be base Class to define the
 
 # Dependency
 def get_db():
+
+    print(SQLALCHEMY_DATABASE_URL)
     db = SessionLocal()
     try:
         yield db
