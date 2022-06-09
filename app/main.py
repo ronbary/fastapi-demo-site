@@ -10,7 +10,9 @@ from psycopg2.extras import RealDictCursor
 from starlette.middleware.cors import CORSMiddleware
 
 from app import models , auth
-from database import engine
+
+# from database import engine
+
 from schemas import PostCreate, Post   # we placed our schemas class in separate file
 from routers import post,user,vote       # import the post and user , vote implementation using the routers
 
