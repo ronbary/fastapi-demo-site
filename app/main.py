@@ -92,14 +92,17 @@ app.include_router(user.router)
 app.include_router(auth.router)
 app.include_router(vote.router)
 
-
 # this is the decorator that connect the "GET" HTTP method to the FastAPI
 # the / means it's the root of the URL server
 
 @app.get("/")
 def root():
-    return {"message": "Hello this is my FastAPI site."}
+    return {"message": "Hello from ron ...  this is my FastAPI site writen in python :)"}
 
+
+@app.get("/favicon.ico", include_in_schema=False)
+def root():
+    return {"message": "Hello from ron"}
 
 ######################################################################################################
 ### Implementation of GET / GET{id} / POST / PUT / DELETE with regular SQL with Postgres db.
