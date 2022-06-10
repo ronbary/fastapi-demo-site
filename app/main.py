@@ -100,7 +100,7 @@ def root():
     return {"message": "Hello from ron ...  this is my FastAPI site writen in python :)"}
 
 
-@app.get("/favicon.ico", include_in_schema=False)
+@app.get("/favicon.ico", include_in_schema=False) # this is to hide this route
 def root():
     return {"message": "Hello from ron"}
 
