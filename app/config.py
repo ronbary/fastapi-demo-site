@@ -18,4 +18,7 @@ class Settings(BaseSettings):
         env_file = ".env"       # this tell the class to read all values from file .env
 
 
+# in production / or heroku host server we define our environment variables there
+# and Settings class use and take all the values from there
+
 settings = Settings()

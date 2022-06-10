@@ -1,3 +1,5 @@
+from _cffi_backend import typeof
+
 from app import utils, models, schemas
 from sqlalchemy.orm import Session
 from fastapi import FastAPI, Response, status, HTTPException, Depends,APIRouter
@@ -21,11 +23,17 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
     print(f"email to create user :  {user.email}")
 
-    user = db.query(models.User).filter(models.User.email == user.email).first()
-    if user:
+
+    userExist = db.query(models.User).filter(models.User.email == user.email).first()
+    if userExist:
+        print(f"user exists ... {userExist} for -> {user.email} ")
         raise HTTPException(status_code=status.HTTP_409_CONFLICT,detail=f"user with email: {user.email} already exist")
 
+    print(f"before hash,  user: {user.email}     password:       {user.password}")
+
     hashed_password = utils.hash(user.password)
+
+    print(f"hashed password:  {hashed_password}  {typeof(hashed_password)} ")
 
     user.password = hashed_password
 
