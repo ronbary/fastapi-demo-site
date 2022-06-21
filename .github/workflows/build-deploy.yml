@@ -1,0 +1,13 @@
+name: Build and Deploy Code
+
+# what will trigger our code to run we specify it for pull or push or both
+on: [push,pull_request]
+
+jobs:
+  job1:
+    runs-on: ubunto-latest
+    steps:
+      - name: pulling git repo
+        uses: actions/checkout@v3
+      - name: say hello to ronbary
+        run: echo "hello ronbary"

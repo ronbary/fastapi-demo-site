@@ -19,8 +19,9 @@ from routers import post,user,vote       # import the post and user , vote imple
 
 from app.config import settings # import the settings class that holds all the environment variables
 
-
+# this line tell sqlalchemy to build db tables according to our model
 # models.Base.metadata.create_all(bind=engine)
+
 
 # connect to the DB (host: localhost / dbname: fastapi / user: postgres / password: 1234)
 # loop until we connect to the db
@@ -95,9 +96,9 @@ app.include_router(vote.router)
 # this is the decorator that connect the "GET" HTTP method to the FastAPI
 # the / means it's the root of the URL server
 
-@app.get("/")
+@app.get("/",status_code=status.HTTP_200_OK)
 def root():
-    return {"message": "Hello from ron ...  this is my FastAPI site writen in python :)"}
+    return {"message": "Hello from roni ...  this is my FastAPI site , cool!"}
 
 
 @app.get("/favicon.ico", include_in_schema=False) # this is to hide this route

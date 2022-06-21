@@ -1,0 +1,35 @@
+version: "3"
+services:
+  api:
+      build:  .
+      depends_on:
+        - postgres
+      ports:
+        - 8000:8000
+      volumes:
+        - ./:/usr/src/app:ro
+      command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+      # another option to read the environment variables from .env
+      #env_file:
+      #  - ./.env
+      environment:
+       - DATABASE_HOSTNAME=postgres
+       - DATABASE_PORT=5432
+       - DATABASE_PASSWORD=1234
+       - DATABASE_NAME=fastapi
+       - DATABASE_USERNAME=postgres
+       - SECRET_KEY="91a5720282468b78db672a4c9e8a3e543053591b1ee1b14d475cde0c493f3248"
+       - ALGORITHM="HS256"
+       - ACCESS_TOKEN_EXPIRE_MINUTES=60
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=fastapi
+
+    volumes:                 # this is the path where docker will save the DB data when the container is going down
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+    postgres-db:
