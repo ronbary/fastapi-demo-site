@@ -98,7 +98,7 @@ app.include_router(vote.router)
 
 @app.get("/",status_code=status.HTTP_200_OK)
 def root():
-    return {"message": "Hello from  cool!"}
+    return {"message": "Hello from ron broken test cool!"}
     # return {"message": "Hello from roni ...  this is my FastAPI site , cool!"}
 
 
