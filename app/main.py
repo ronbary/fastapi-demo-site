@@ -98,12 +98,12 @@ app.include_router(vote.router)
 
 @app.get("/",status_code=status.HTTP_200_OK)
 def root():
-    return {"message": "Hello from roni ...  this is my FastAPI site ,successfully deployed from CI into Heroku , cool!"}
+    return {"message": "Hello from roni ...  this is my FastAPI site , cool!"}
 
 
-@app.get("/favicon.ico", include_in_schema=False) # this is to hide this route
-def root():
-    return {"message": "Hello from ron"}
+# @app.get("/favicon.ico", include_in_schema=False) # this is to hide this route
+# def root():
+#     return {"message": "Hello from roni ...  this is my FastAPI site , cool!"}
 
 ######################################################################################################
 ### Implementation of GET / GET{id} / POST / PUT / DELETE with regular SQL with Postgres db.
