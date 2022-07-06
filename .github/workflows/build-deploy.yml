@@ -86,9 +86,13 @@ jobs:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
             heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
             heroku_email: ${{secrets.HEROKU_EMAIL}}
+            dontuseforce: true
+            dontautocreate: true
+
 
 
       # steps to do the deploy manually
+      #
       # pull our github repo
       # install heroku cli
       # heroku login
